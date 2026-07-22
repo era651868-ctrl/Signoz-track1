@@ -17,7 +17,10 @@
           <h1>Agent Ops Command Center</h1>
           <p class="hero-copy">A production-grade observability layer for AI agents that makes latency, spend, reliability, and incidents visible in real time.</p>
         </div>
-        <button id="runSimulation" class="primary-btn">Simulate agent run</button>
+        <div class="hero-actions">
+          <button id="runSimulation" class="primary-btn">Simulate agent run</button>
+          <button id="exportReport" class="secondary-btn">Export briefing</button>
+        </div>
       </header>
 
       <section class="kpi-grid">
@@ -89,6 +92,31 @@
           </div>
           <div id="logsList" class="log-list"></div>
         </div>
+      </section>
+
+      <section class="executive-grid">
+        <div class="card">
+          <div class="section-title">
+            <h3>Reliability briefing</h3>
+            <span>Service level confidence</span>
+          </div>
+          <div id="reliabilityList" class="metric-list"></div>
+        </div>
+        <div class="card">
+          <div class="section-title">
+            <h3>Recommended actions</h3>
+            <span>Judged as next best steps</span>
+          </div>
+          <div id="recommendationList" class="metric-list"></div>
+        </div>
+      </section>
+
+      <section class="card architecture-card">
+        <div class="section-title">
+          <h3>System architecture</h3>
+          <span>How the platform observes the full agent workflow</span>
+        </div>
+        <img src="/architecture.svg" alt="Agent observability architecture diagram" class="architecture-image" />
       </section>
     </div>
 

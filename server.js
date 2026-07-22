@@ -72,6 +72,21 @@ const alerts = [
   { id: 'ALT-202', title: 'Error rate climbed above 3%', severity: 'medium', source: 'Policy Router', status: 'active' }
 ];
 
+const reliability = {
+  slo: 99.2,
+  errorBudget: '0.8%',
+  mttd: '4m',
+  mttr: '12m',
+  policyConfidence: 92.3,
+  trustScore: 98.6
+};
+
+const recommendations = [
+  'Auto-scale the retrieval path before the next burst window.',
+  'Increase guardrail thresholds for the claims workflow to reduce false escalations.',
+  'Route high-risk approvals to human review before the budget anomaly repeats.'
+];
+
 app.get('/api/health', (req, res) => {
   const span = tracer.startSpan('health.check');
   span.setAttribute('http.route', '/api/health');
@@ -99,13 +114,17 @@ app.get('/api/overview', (req, res) => {
       agents: getAgents(),
       alerts,
       metrics,
-      logs
+      logs,
+      reliability,
+      recommendations
     },
     agents: getAgents(),
     incidents,
     alerts,
     metrics,
-    logs
+    logs,
+    reliability,
+    recommendations
   });
 });
 

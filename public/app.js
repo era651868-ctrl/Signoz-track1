@@ -3,7 +3,9 @@ const state = {
   incidents: [],
   trace: [],
   metrics: [],
-  logs: []
+  logs: [],
+  reliability: null,
+  recommendations: []
 };
 
 async function loadOverview() {
@@ -21,6 +23,8 @@ async function loadOverview() {
   state.trace = traceData.trace || [];
   state.metrics = metricsData.metrics || [];
   state.logs = logsData.logs || [];
+  state.reliability = data.overview.reliability || null;
+  state.recommendations = data.overview.recommendations || [];
   render();
 }
 
@@ -111,6 +115,32 @@ function render() {
     logsList.appendChild(element);
   });
 
+  const reliabilityList = document.getElementById('reliabilityList');
+  reliabilityList.innerHTML = '';
+  if (state.reliability) {
+    const items = [
+      { label: 'SLO compliance', value: `${state.reliability.slo}%` },
+      { label: 'Error budget', value: state.reliability.errorBudget },
+      { label: 'MTTD', value: state.reliability.mttd },
+      { label: 'MTTR', value: state.reliability.mttr }
+    ];
+    items.forEach((item) => {
+      const element = document.createElement('div');
+      element.className = 'metric-item';
+      element.innerHTML = `<div class="agent-meta"><strong>${item.label}</strong><span class="badge healthy">${item.value}</span></div>`;
+      reliabilityList.appendChild(element);
+    });
+  }
+
+  const recommendationList = document.getElementById('recommendationList');
+  recommendationList.innerHTML = '';
+  state.recommendations.forEach((item) => {
+    const element = document.createElement('div');
+    element.className = 'metric-item';
+    element.innerHTML = `<p class="small">• ${item}</p>`;
+    recommendationList.appendChild(element);
+  });
+
   incidentList.querySelectorAll('.resolve-btn').forEach((button) => {
     button.addEventListener('click', async () => {
       const id = button.getAttribute('data-id');
@@ -131,6 +161,16 @@ document.getElementById('runSimulation').addEventListener('click', async () => {
   button.textContent = `Run logged • ${payload.run.id}`;
   setTimeout(() => { button.textContent = 'Simulate agent run'; }, 1800);
   loadOverview();
+});
+
+document.getElementById('exportReport').addEventListener('click', () => {
+  const report = `Agent Ops Command Center briefing\n\nTrust score: ${state.overview?.trustScore ?? 'n/a'}%\nSLO compliance: ${state.reliability?.slo ?? 'n/a'}%\nActive incidents: ${state.incidents.filter((i) => i.status !== 'resolved').length}\n\nRecommended actions:\n- ${state.recommendations.join('\n- ')}`;
+  const blob = new Blob([report], { type: 'text/plain;charset=utf-8' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'agent-ops-briefing.txt';
+  link.click();
+  URL.revokeObjectURL(link.href);
 });
 
 loadOverview();
