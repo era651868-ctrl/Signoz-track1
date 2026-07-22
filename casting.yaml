@@ -1,0 +1,12 @@
+services:
+  agent-ops-command-center:
+    image: node:24-alpine
+    command: sh -c "npm install && npm start"
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      OTEL_SERVICE_NAME: agent-ops-command-center

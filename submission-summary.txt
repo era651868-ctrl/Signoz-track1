@@ -1,0 +1,4 @@
+Project: Agent Ops Command Center
+Track: AI & Agent Observability
+Value proposition: A production-grade observability layer for autonomous AI agents that makes latency, cost, reliability, and incident posture visible in real time.
+Highlights: Live dashboard, incident resolution workflow, decision trace view, and SigNoz-aligned observability story.

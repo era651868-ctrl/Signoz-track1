@@ -1,0 +1,6 @@
+1. Open the Agent Ops Command Center dashboard.
+2. Highlight the live KPIs for throughput, latency, success rate, and spend.
+3. Show the agent fleet health and explain how each agent is monitored.
+4. Open the incident pulse and demonstrate how an operator can resolve an incident.
+5. Reveal the decision trace to show how a request moved through the agent workflow.
+6. Emphasize the trust and operational clarity this brings to real-world AI systems.

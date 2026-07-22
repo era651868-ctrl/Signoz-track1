@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agent Ops Command Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">SigNoz • Track 01 • AI & Agent Observability</p>
+          <h1>Agent Ops Command Center</h1>
+          <p class="hero-copy">A production-grade observability layer for AI agents that makes latency, spend, reliability, and incidents visible in real time.</p>
+        </div>
+        <button id="runSimulation" class="primary-btn">Simulate agent run</button>
+      </header>
+
+      <section class="kpi-grid">
+        <article class="card kpi-card">
+          <p class="label">Throughput</p>
+          <h2 id="throughput">—</h2>
+          <span>requests / minute</span>
+        </article>
+        <article class="card kpi-card">
+          <p class="label">P95 latency</p>
+          <h2 id="latency">—</h2>
+          <span>ms</span>
+        </article>
+        <article class="card kpi-card">
+          <p class="label">Success rate</p>
+          <h2 id="success">—</h2>
+          <span>%</span>
+        </article>
+        <article class="card kpi-card">
+          <p class="label">Daily spend</p>
+          <h2 id="spend">—</h2>
+          <span>USD</span>
+        </article>
+        <article class="card kpi-card">
+          <p class="label">Trust score</p>
+          <h2 id="trustScore">—</h2>
+          <span>operational trust</span>
+        </article>
+      </section>
+
+      <main class="content-grid">
+        <section class="card">
+          <div class="section-title">
+            <h3>Agent fleet</h3>
+            <span>Live health</span>
+          </div>
+          <div id="agentList" class="agent-list"></div>
+        </section>
+
+        <section class="card">
+          <div class="section-title">
+            <h3>Incident pulse</h3>
+            <span>SigNoz correlated alerts</span>
+          </div>
+          <div id="incidentList" class="incident-list"></div>
+        </section>
+      </main>
+
+      <section class="card trace-card">
+        <div class="section-title">
+          <h3>Decision trace</h3>
+          <span>Why the agent chose this response path</span>
+        </div>
+        <div id="traceList" class="trace-list"></div>
+      </section>
+
+      <section class="metrics-grid">
+        <div class="card">
+          <div class="section-title">
+            <h3>Signals & metrics</h3>
+            <span>AI system health</span>
+          </div>
+          <div id="metricsList" class="metric-list"></div>
+        </div>
+        <div class="card">
+          <div class="section-title">
+            <h3>Live logs</h3>
+            <span>Operational narrative</span>
+          </div>
+          <div id="logsList" class="log-list"></div>
+        </div>
+      </section>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
