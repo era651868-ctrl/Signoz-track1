@@ -2,29 +2,47 @@
 
 A polished SigNoz hackathon submission for Track 01: AI & Agent Observability.
 
-## What it does
+## The idea
 
-This project turns an AI agent fleet into a trustworthy, enterprise-grade observability experience. It exposes:
+AI agents are becoming core business systems, but most teams still operate them like black boxes. When an agent fails, slows down, overspends, or makes a risky decision, the organization has no clear way to understand what happened.
 
-- A live command center dashboard for agent health, latency, success rate, spend, and incidents
-- A decision-trace view that explains how an agent moved through a workflow
-- Signal panels for metrics and logs that feel closer to a real SRE console than a toy demo
-- A polished product story centered on trust, clarity, and operational control for AI systems
+Agent Ops Command Center changes that. It turns agent operations into a visible, trustworthy, and actionable command layer for modern teams.
 
-## Why this stands out
+## What the product does
 
-This is designed to feel like a real product that an enterprise could adopt, not a generic template. The experience focuses on:
+This project introduces a production-inspired observability experience for AI agents with:
 
-- Trust: every critical signal is visible and easy to reason about
-- Innovation: agent workflows are treated as operational systems, not black boxes
-- Real-world value: teams can debug failures, budget overruns, and latency issues quickly
-- SigNoz alignment: the experience uses traces, metrics, logs, and an operational narrative in a way that feels native to observability
+- Live agent fleet monitoring for health, latency, success rate, spend, and incidents
+- A decision-trace view that explains the reasoning path taken by the agent
+- Signal panels for metrics and logs that feel like a real SRE console
+- A premium, enterprise-style experience centered on trust, clarity, and operational control
+
+## Why judges should care
+
+This is not just another dashboard. It is a practical answer to one of the biggest problems in AI adoption today: the inability to observe, explain, and trust autonomous systems.
+
+The value is clear:
+
+- Trust: teams can finally see how agents behave in production
+- Innovation: observability becomes a core product capability, not an afterthought
+- Real-world impact: operations, compliance, and engineering teams can debug faster and act smarter
+- SigNoz alignment: the experience is built around traces, metrics, logs, and operational signals in a way that feels native to observability
+
+## Why this is a strong hackathon submission
+
+This project was designed to feel like something an enterprise could actually adopt:
+
+- polished interface
+- strong product story
+- realistic operational workflow
+- clear connection to SigNoz and OpenTelemetry principles
+- reproducible deployment structure for judges and reviewers
 
 ## Tech stack
 
 - Node.js + Express
 - OpenTelemetry tracing
-- Responsive vanilla frontend
+- Responsive frontend
 - SigNoz-ready telemetry structure
 
 ## Run locally
@@ -38,12 +56,12 @@ Then open http://localhost:3000.
 
 ## Project structure
 
-- server.js: API server, telemetry hooks, and data models
-- public/: dashboard frontend assets
+- server.js: API layer, telemetry hooks, and core data models
+- public/: frontend dashboard and UI experience
 - package.json: dependencies and scripts
 - casting.yaml and casting.yaml.lock: reproducible deployment files
-- blog-draft.md: submission-ready narrative
+- blog-draft.md: submission narrative and story
 
 ## Submission angle
 
-This project is positioned as an Agent Ops Command Center for modern companies running autonomous workflows, copilots, and AI agents in production. It demonstrates how observability can move from an afterthought to a core operating layer for enterprise AI systems.
+This project is positioned as an Agent Ops Command Center for companies deploying autonomous workflows, copilots, and AI agents in production. It demonstrates how observability can move from a support layer to a core operating layer for enterprise AI systems.
